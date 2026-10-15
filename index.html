@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Use Tiers</title>
+    <meta name="description" content="Classify CS assignments as Red, Yellow, or Green for AI use, and justify the call.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+
+    <header class="hero">
+      <div class="wrap">
+        <div class="brand">
+          <div class="ribbons" aria-hidden="true">
+            <span class="ribbon teal"><span>CLASSIFY THE</span></span>
+            <span class="ribbon purple"><span>ASSIGNMENT</span></span>
+          </div>
+          <svg class="pencil" viewBox="0 0 60 120" aria-hidden="true">
+            <g transform="rotate(28 30 60)">
+              <rect x="18" y="12" width="24" height="68" fill="#16a0a8"/>
+              <rect x="31" y="12" width="11" height="68" fill="#3b0f51"/>
+              <rect x="17" y="4" width="26" height="12" rx="3" fill="#d97c22"/>
+              <polygon points="18,80 42,80 30,106" fill="#ecb57a"/>
+              <polygon points="26,97 34,97 30,106" fill="#3b0f51"/>
+            </g>
+          </svg>
+        </div>
+        <h1>AI Use Tiers <span class="lights"><span class="tl all big"><i></i><i></i><i></i></span></span></h1>
+        <p class="lede">Decide when AI belongs in CS work: <strong style="color:var(--red)">Red</strong>, <strong style="color:var(--yellow-ink)">Yellow</strong>, or <strong style="color:var(--green)">Green</strong>. Classify real assignments with your group, then reflect on your own classroom.</p>
+      </div>
+      <svg class="swoosh" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,58 C320,8 820,4 1200,46 L1200,90 L0,90 Z" fill="#5b2e70"/>
+        <path d="M0,74 C360,26 830,26 1200,64 L1200,90 L0,90 Z" fill="#3b0f51"/>
+        <path d="M0,50 C320,0 820,-4 1200,38" fill="none" stroke="#16a0a8" stroke-width="6"/>
+      </svg>
+    </header>
+
+    <nav class="tabbar" aria-label="Sections">
+      <div class="wrap tabs" role="tablist">
+        <button class="tab" role="tab" id="tab-home" aria-controls="home" aria-selected="true">Home</button>
+        <button class="tab" role="tab" id="tab-activity" aria-controls="activity" aria-selected="false">Stoplight Activity</button>
+        <button class="tab" role="tab" id="tab-reflect" aria-controls="reflect" aria-selected="false">Reflection</button>
+        <button class="tab" role="tab" id="tab-disclose" aria-controls="disclose" aria-selected="false">Disclosure</button>
+      </div>
+    </nav>
+
+    <main class="wrap">
+
+      <!-- ================= HOME ================= -->
+      <section id="home" class="panel" role="tabpanel" aria-labelledby="tab-home">
+        <div class="eyebrow">Best Practices for AI Use in the CS Classroom</div>
+        <h2 class="pagetitle">Choose an activity</h2>
+        <p class="pagelede">Both activities use the same Red, Yellow, and Green tiers. The full Tier Guide is built into the Stoplight Activity.</p>
+        <div class="options">
+          <a class="option" href="#activity">
+            <div class="top"><span class="tl big all"><i></i><i></i><i></i></span><span class="tag">Group activity</span></div>
+            <h3>Stoplight Activity</h3>
+            <p>Work through real CS assignments with your group. For each one:</p>
+            <ul><li>Decide whether it's Red, Yellow, or Green</li><li>Write down why</li><li>Compare your call with the facilitator's take</li></ul>
+            <span class="go">Start the activity &rarr;</span>
+          </a>
+          <a class="option reflect" href="#reflect">
+            <div class="top">
+              <svg class="pencil" viewBox="0 0 60 120" aria-hidden="true"><g transform="rotate(28 30 60)"><rect x="18" y="12" width="24" height="68" fill="#16a0a8"/><rect x="31" y="12" width="11" height="68" fill="#3b0f51"/><rect x="17" y="4" width="26" height="12" rx="3" fill="#d97c22"/><polygon points="18,80 42,80 30,106" fill="#ecb57a"/><polygon points="26,97 34,97 30,106" fill="#3b0f51"/></g></svg>
+              <span class="tag">Individual + partner</span></div>
+            <h3>Reflection</h3>
+            <p>Bring the tiers back to your own classroom:</p>
+            <ul><li>Reflect on the activity</li><li>Classify and adapt a classroom assignment</li><li>Share and refine with a partner</li><li>Assess impact before you leave</li></ul>
+            <span class="go">Start reflecting &rarr;</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ================= ACTIVITY ================= -->
+      <section id="activity" class="panel" role="tabpanel" aria-labelledby="tab-activity" hidden>
+      
+        <div class="toggles" role="group" aria-label="Reference">
+          <button class="toggle" id="toggleGuide" aria-expanded="false" aria-controls="guide">
+            <span class="tl all"><i></i><i></i><i></i></span> Tier Guide <span class="chev" aria-hidden="true">&#9662;</span></button>
+          <button class="toggle" id="toggleCross" aria-expanded="false" aria-controls="cross">
+            <span class="crossico" aria-hidden="true">!</span> When a Student Crosses a Tier <span class="chev" aria-hidden="true">&#9662;</span></button>
+        </div>
+
+        <div class="drawer" id="guide" hidden>
+          <div class="drawerhead"><span class="eyebrow">Tier Guide</span><button class="drawerclose" data-close="guide" aria-label="Close tier guide">Close &times;</button></div>
+          <div class="tiers" id="tiers"></div>
+        </div>
+
+        <div class="drawer" id="cross" hidden>
+          <div class="drawerhead"><span class="eyebrow">When a student crosses a tier</span><button class="drawerclose" data-close="cross" aria-label="Close">Close &times;</button></div>
+          <h2 class="pagetitle" style="font-size:clamp(26px,3.5vw,36px)">A learning conversation first</h2>
+          <p style="max-width:700px;color:var(--muted);margin:0">Treat a suspected tier violation as a conversation built on evidence of understanding, not an accusation.</p>
+          <div class="cross">
+            <div class="card"><span class="num">1</span><h3>Ask them to explain the code</h3><p>Pick a line or two. If they wrote it, they can walk you through it.</p></div>
+            <div class="card"><span class="num">2</span><h3>Name what the tier protected</h3><p>Talk about what the tier was there for and what they missed by skipping it.</p></div>
+            <div class="card"><span class="num">3</span><h3>Close the gap</h3><p>Have the student redo portions of the project if possible, or write a reflection log explaining the code.</p></div>
+          </div>
+          <div class="note">If it becomes habitual, follow your school's academic integrity policy.</div>
+        </div>
+
+        <div class="progress">
+          <div class="eyebrow" id="progressLabel">Assignment 1 of 1</div>
+          <div class="dots" id="dots"></div>
+        </div>
+
+        <article class="card assignment" id="assignmentCard"></article>
+
+        <div class="helper">
+          <details>
+            <summary>Stuck? Run the three-question check</summary>
+            <ol>
+              <li><strong>Is the learning goal about AI itself</strong> (evaluating its output, testing its limits, how it works) <strong>and</strong> have students already shown the underlying skill in Red work? Both yes → <strong style="color:var(--green)">Green</strong> is possible.</li>
+              <li><strong>Does the task measure or build a foundational skill</strong> where the student's own thinking is the point? Yes → start at <strong style="color:var(--red)">Red</strong>. It's the default.</li>
+              <li><strong>Is there one specific, nameable AI use</strong> that comes only <em>after</em> an independent attempt and doesn't do the core work? Yes → a <strong style="color:var(--yellow-ink)">Yellow</strong> allowance may fit. Write the exact rule.</li>
+            </ol>
+          </details>
+        </div>
+
+        <h2 class="step-title"><b>1</b>Make your call</h2>
+        <div class="picker" id="activityPicker" role="group" aria-label="Choose a tier">
+          <button class="pick red" data-tier="red" aria-pressed="false"><span class="tl big r"><i></i><i></i><i></i></span><span><span class="name">RED</span><br><span class="sub">No AI</span></span></button>
+          <button class="pick yellow" data-tier="yellow" aria-pressed="false"><span class="tl big y"><i></i><i></i><i></i></span><span><span class="name">YELLOW</span><br><span class="sub">Narrow use</span></span></button>
+          <button class="pick green" data-tier="green" aria-pressed="false"><span class="tl big g"><i></i><i></i><i></i></span><span><span class="name">GREEN</span><br><span class="sub">Rare &amp; deliberate</span></span></button>
+        </div>
+
+        <h2 class="step-title"><b>2</b>Justify it</h2>
+        <div class="chips" id="chips"></div>
+        <label for="why" class="sr-only" style="position:absolute;left:-9999px">Your reasoning</label>
+        <textarea id="why" placeholder="What skill does this assignment build or measure? What would AI replace? If you chose Yellow, write the exact rule you'd give students."></textarea>
+        <p class="hint" id="whyHint">Pick a tier and write at least a sentence to unlock the reveal.</p>
+
+        <div class="actions">
+          <button class="btn teal" id="revealBtn" disabled>Lock in &amp; reveal</button>
+        </div>
+
+        <div id="revealBox"></div>
+
+        <div class="navrow">
+          <button class="btn ghost" id="prevBtn">&larr; Previous</button>
+          <button class="btn ghost" id="nextBtn">Next &rarr;</button>
+        </div>
+
+        <div class="card export">
+          <div>
+            <label>Keep a copy</label>
+            <p class="hint" style="margin:0">Download your answers as a text file to keep.</p>
+          </div>
+          <div class="actions" style="margin:0">
+            <button class="btn" id="dlBtn">Download my answers</button>
+            <button class="btn ghost" id="clearBtn">Start over</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= DISCLOSURE ================= -->
+      <section id="disclose" class="panel disclose" role="tabpanel" aria-labelledby="tab-disclose" hidden>
+        <div class="eyebrow">AI Disclosure Log</div>
+        <h2 class="pagetitle">Disclosure</h2>
+        <p class="pagelede">Every Yellow and Green use goes in a disclosure log: what was asked, what the AI gave back, what was kept or changed, and why. Download the template for your students, and see the log for how AI was used to build this site.</p>
+
+        <div class="docs">
+          <div class="card doccard">
+            <span class="filetype">WORD DOCUMENT</span>
+            <h3>Template Log</h3>
+            <p>A blank AI Disclosure Log for students: project details, tier, permitted use, a checklist to complete before keeping AI-generated code, four reflection questions, and a log table.</p>
+            <div class="actions"><a class="btn linkbtn" href="assets/AI_Disclosure_Log_Template.docx" download>Download template (.docx)</a></div>
+          </div>
+          <div class="card doccard mine">
+            <span class="filetype">PDF</span>
+            <h3>This Site's Log</h3>
+            <p>The completed log for the AI use behind this website, built as a Green-tier project with Claude. </p>
+            <div class="actions">
+              <a class="btn linkbtn" href="assets/AI_Disclosure_Log_AI_Tiers_Website.pdf" download>Download log (.pdf)</a>
+              <a class="btn ghost linkbtn" href="assets/AI_Disclosure_Log_AI_Tiers_Website.pdf" target="_blank" rel="noopener">Open PDF</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================= REFLECTION ================= -->
+      <section id="reflect" class="panel" role="tabpanel" aria-labelledby="tab-reflect" hidden>
+        <div class="eyebrow">Individual + partner</div>
+        <h2 class="pagetitle">Reflection</h2>
+        <p class="pagelede">Bring the tiers back to your own classroom. Work through the first two parts on your own, then pair up to share and refine.</p>
+
+        <!-- Part 1 -->
+        <h2 class="step-title"><b>1</b>Reflect on the activity</h2>
+        <p class="rdesc">Identify what made an assignment Red, Yellow, or Green. Discuss how the AI-use rules protected the learning objective.</p>
+        <div class="card">
+          <div class="q">
+            <label for="rf-tierFactors">What made an assignment Red, Yellow, or Green?</label>
+            <p class="qhelp">Pick one or two assignments from the Stoplight Activity. Which details decided the tier?</p>
+            <textarea id="rf-tierFactors" data-key="tierFactors"></textarea>
+          </div>
+          <div class="q">
+            <label for="rf-protected">How did the AI-use rules protect the learning objective?</label>
+            <p class="qhelp">What would students have lost if AI had been allowed, or allowed more broadly?</p>
+            <textarea id="rf-protected" data-key="protected"></textarea>
+          </div>
+        </div>
+
+        <!-- Part 2 -->
+        <h2 class="step-title"><b>2</b>Classify and adapt a classroom assignment</h2>
+        <p class="rdesc">Choose an upcoming CS assignment in your own classroom and determine its AI classification, permitted uses, and expectations for documenting AI use.</p>
+        <div class="card">
+          <div class="q">
+            <label for="rf-assignment">Your assignment</label>
+            <p class="qhelp">Describe it briefly: what students do, how it's graded, and whether it's formative or summative.</p>
+            <textarea id="rf-assignment" data-key="assignment"></textarea>
+          </div>
+          <div class="q">
+            <span class="qlabel">AI classification</span>
+            <div class="picker" id="reflectPicker" role="group" aria-label="Choose a tier for your assignment" style="margin-top:10px">
+              <button class="pick red" data-tier="red" aria-pressed="false"><span class="tl big r"><i></i><i></i><i></i></span><span><span class="name">RED</span><br><span class="sub">No AI</span></span></button>
+              <button class="pick yellow" data-tier="yellow" aria-pressed="false"><span class="tl big y"><i></i><i></i><i></i></span><span><span class="name">YELLOW</span><br><span class="sub">Narrow use</span></span></button>
+              <button class="pick green" data-tier="green" aria-pressed="false"><span class="tl big g"><i></i><i></i><i></i></span><span><span class="name">GREEN</span><br><span class="sub">Rare &amp; deliberate</span></span></button>
+            </div>
+          </div>
+          <div class="q">
+            <label for="rf-uses">Permitted uses</label>
+            <p class="qhelp" id="usesHelp">Pick a tier above for guidance.</p>
+            <textarea id="rf-uses" data-key="uses"></textarea>
+          </div>
+          <div class="q">
+            <label for="rf-documentation">Documenting AI use</label>
+            <p class="qhelp" id="docHelp">Pick a tier above for guidance.</p>
+            <textarea id="rf-documentation" data-key="documentation"></textarea>
+          </div>
+        </div>
+
+        <!-- Part 3 -->
+        <h2 class="step-title"><b>3</b>Share and refine</h2>
+        <p class="rdesc">Discuss plans with a partner. Identify one possible challenge and revise the plan to address it.</p>
+        <div class="card">
+          <div class="q">
+            <label for="rf-challenge">One possible challenge</label>
+            <p class="qhelp">What could go wrong when you use this plan with students?</p>
+            <textarea id="rf-challenge" data-key="challenge"></textarea>
+          </div>
+          <div class="q">
+            <label for="rf-revision">How you'll revise the plan</label>
+            <p class="qhelp">What will you change to address that challenge?</p>
+            <textarea id="rf-revision" data-key="revision"></textarea>
+          </div>
+        </div>
+
+        <!-- Assess impact -->
+        <div class="card impact">
+          <div class="eyebrow">Assess impact</div>
+          <h2 class="pagetitle" style="font-size:clamp(26px,3.5vw,36px)">What will success look like?</h2>
+          <p class="rdesc" style="margin:0">Before you leave, consider three questions:</p>
+          <div class="q">
+            <label for="rf-change">What will I change?</label>
+            <p class="qhelp">Identify one AI integration strategy you will try in your CS classroom.</p>
+            <textarea id="rf-change" data-key="change"></textarea>
+          </div>
+          <div class="q">
+            <label for="rf-evidence">What evidence will I collect?</label>
+            <p class="qhelp">Determine how you will know whether students are thinking critically, solving problems, and learning the intended skills.</p>
+            <textarea id="rf-evidence" data-key="evidence"></textarea>
+          </div>
+          <div class="q">
+            <label for="rf-adjust">What will I adjust?</label>
+            <p class="qhelp">Use what you observe to refine your assignment directions, AI-use boundaries, or instructional approach.</p>
+            <textarea id="rf-adjust" data-key="adjust"></textarea>
+          </div>
+        </div>
+
+        <div class="card export">
+          <div>
+            <label>Keep a copy</label>
+            <p class="hint" style="margin:0">Download your reflection as a text file for your own planning.</p>
+          </div>
+          <div class="actions" style="margin:0">
+            <button class="btn" id="rDlBtn">Download my reflection</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+
+    <footer aria-hidden="true">
+      <svg class="swoosh" viewBox="0 0 1200 60" preserveAspectRatio="none" style="height:40px;margin:0;background:var(--paper)">
+        <path d="M0,40 C320,0 820,-2 1200,30 L1200,60 L0,60 Z" fill="#3b0f51"/>
+        <path d="M0,34 C320,-6 820,-8 1200,24" fill="none" stroke="#16a0a8" stroke-width="5"/>
+      </svg>
+      <div class="footband"></div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+  </body>
+</html>
