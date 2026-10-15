@@ -246,9 +246,9 @@ function exportText(){
 function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove("show"),1800); }
 
 /* ---------- Events ---------- */
-/* Page routing: #home, #activity, #reflect, #disclose. #guide and #cross open the
+/* Page routing: #home, #activity, #reflect, #disclosure. #guide and #cross open the
    Stoplight Activity with that reference section expanded. */
-const PAGES = ["home","activity","disclose","reflect","guide","cross"];
+const PAGES = ["home","activity","disclosure","reflect","guide","cross"];
 const DRAWERS = {guide:"#toggleGuide", cross:"#toggleCross"};
 function setDrawer(id, open){
   const d = document.getElementById(id); if(!d) return;
