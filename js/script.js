@@ -218,7 +218,7 @@ function renderReveal(){
   if(!r.revealed || !r.tier){ box.innerHTML = ""; return; }
   box.innerHTML = `
     <section class="card reveal" aria-live="polite">
-      <div class="eyebrow">Facilitator's take</div>
+      <div class="eyebrow">Facilitators' take</div>
       <div class="compare">
         <span class="badge ${r.tier}">Your call <span class="tier">${NAMES[r.tier]}</span></span>
         <span class="badge ${a.suggested}">Suggested <span class="tier">${NAMES[a.suggested]}</span></span>
