@@ -251,6 +251,8 @@ function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("sh
 const PAGES = ["home","activity","disclosure","reflect","guide","cross"];
 const DRAWERS = {guide:"#toggleGuide", cross:"#toggleCross"};
 function setDrawer(id, open){
+  // Opening one drawer closes the other, so only one is open at a time
+  if(open) Object.keys(DRAWERS).forEach(other => { if(other !== id) setDrawer(other, false); });
   const d = document.getElementById(id); if(!d) return;
   d.hidden = !open; $(DRAWERS[id]).setAttribute("aria-expanded", String(open));
 }
