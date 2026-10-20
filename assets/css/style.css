@@ -42,7 +42,18 @@
 
   /* ---------- Tabs ---------- */
   .tabbar{background:var(--purple);position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-  .tabs{display:flex;gap:4px;overflow-x:auto}
+   .tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  /* Swipe hint: fades + arrows on the edges, only when the menu is wider than the screen */
+  .tabbar::before,.tabbar::after{position:absolute;top:0;bottom:0;width:56px;display:flex;align-items:center;
+    color:#fff;font-size:24px;font-weight:700;pointer-events:none;opacity:0;transition:opacity .2s;z-index:1}
+  .tabbar::after{content:"\203A";right:0;justify-content:flex-end;padding-right:12px;
+    background:linear-gradient(to right,rgba(59,15,81,0),var(--purple) 65%)}
+  .tabbar::before{content:"\2039";left:0;padding-left:12px;
+    background:linear-gradient(to left,rgba(59,15,81,0),var(--purple) 65%)}
+  .tabbar.more-right::after{opacity:1;animation:nudge 1.2s ease-in-out 3}
+  .tabbar.more-left::before{opacity:1}
+  @keyframes nudge{0%,100%{padding-right:12px}50%{padding-right:4px}}
   .tab{appearance:none;border:0;background:transparent;color:#e6d9ee;font:700 15px "Montserrat",sans-serif;
     padding:14px 16px;cursor:pointer;border-bottom:4px solid transparent;white-space:nowrap}
   .tab[aria-selected="true"]{color:#fff;border-bottom-color:var(--teal)}

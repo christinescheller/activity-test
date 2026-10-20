@@ -385,3 +385,15 @@ renderReflect();
 let startPage = "home";
 try{ startPage = location.hash.slice(1) || "home"; }catch(e){}
 showPage(startPage);
+/* ---------- Menu swipe hint ----------
+   When the tabs are wider than the screen (phones), show a fade + arrow on
+   the side that has more tabs. Hidden when everything fits. */
+const tabsEl = $(".tabs"), tabbar = $(".tabbar");
+function updateTabHint(){
+  const max = tabsEl.scrollWidth - tabsEl.clientWidth;
+  tabbar.classList.toggle("more-right", tabsEl.scrollLeft < max - 4);
+  tabbar.classList.toggle("more-left", tabsEl.scrollLeft > 4);
+}
+tabsEl.addEventListener("scroll", updateTabHint, {passive:true});
+window.addEventListener("resize", updateTabHint);
+updateTabHint();
